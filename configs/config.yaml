@@ -1,0 +1,45 @@
+model:
+  name: cointegrated/rubert-tiny2
+  output_dir: models/sentiment
+
+data:
+  train_path: data/raw/train.csv
+  validation_path: data/raw/valid.csv
+  test_size: 0.1
+  train_max:
+  validation_max:
+
+training:
+  max_len: 256
+  batch_size: 32
+  learning_rate: 2.0e-5
+  epochs: 2
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  seed: 42
+
+evaluation:
+  benchmark_runs: 3
+  benchmark_max_samples: 2000
+  short_max_len: 128
+  labels:
+    0: NEUTRAL
+    1: POSITIVE
+    2: NEGATIVE
+
+results:
+  dir: results
+  training_log: training.log
+  metrics_json: sentiment_metrics.json
+  benchmark_csv: sentiment_benchmark.csv
+
+analysis:
+  full_data_path: data/raw/datasets.csv
+  sample_size: 30000
+  topic_count: 8
+  topic_top_words: 12
+  tfidf_max_features: 30000
+  selected_features: 12000
+  random_state: 42
+  plots_dir: results/figures
+  analysis_json: text_analysis.json

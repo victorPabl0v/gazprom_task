@@ -1,0 +1,75 @@
+split sizes: train 170901 val 21098 test 18990
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+training device: mps
+Loading weights:   0%|          | 0/55 [00:00<?, ?it/s]Loading weights: 100%|██████████| 55/55 [00:00<00:00, 7784.00it/s]
+[transformers] [1mBertForSequenceClassification LOAD REPORT[0m from: cointegrated/rubert-tiny2
+Key                                        | Status     | 
+-------------------------------------------+------------+-
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED | 
+cls.predictions.bias                       | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | 
+cls.seq_relationship.weight                | UNEXPECTED | 
+cls.predictions.transform.dense.bias       | UNEXPECTED | 
+cls.predictions.transform.dense.weight     | UNEXPECTED | 
+cls.seq_relationship.bias                  | UNEXPECTED | 
+classifier.bias                            | MISSING    | 
+classifier.weight                          | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+{'epoch': 1, 'train_loss': 0.6025443815142669, 'val_loss': 0.49192044719150574, 'val_accuracy': 0.7730116598729737, 'val_f1_macro': 0.7670036667374095}
+{'epoch': 2, 'train_loss': 0.4583752922235279, 'val_loss': 0.487302576885982, 'val_accuracy': 0.7749075741776472, 'val_f1_macro': 0.7730351559095401}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.26it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.24it/s]
+TEST metrics:
+              precision    recall  f1-score   support
+
+           0     0.6270    0.7640    0.6888      4933
+           1     0.8741    0.7276    0.7941      9077
+           2     0.7968    0.8679    0.8308      4980
+
+    accuracy                         0.7738     18990
+   macro avg     0.7660    0.7865    0.7712     18990
+weighted avg     0.7897    0.7738    0.7764     18990
+
+Loading weights:   0%|          | 0/57 [00:00<?, ?it/s]Loading weights: 100%|██████████| 57/57 [00:00<00:00, 7658.25it/s]
+speed {'engine': 'pytorch', 'device': 'cpu', 'samples': 6000, 'runs': 3, 'total_sec': 7.41406362503767, 'samples_per_sec': 809.2727960598685, 'ms_per_sample': 1.2356772708396118}
+Loading weights:   0%|          | 0/57 [00:00<?, ?it/s]Loading weights: 100%|██████████| 57/57 [00:00<00:00, 17102.46it/s]
+speed {'engine': 'pytorch', 'device': 'mps', 'samples': 6000, 'runs': 3, 'total_sec': 5.374733665958047, 'samples_per_sec': 1116.3343847160656, 'ms_per_sample': 0.8957889443263412}
+Loading weights:   0%|          | 0/57 [00:00<?, ?it/s]Loading weights: 100%|██████████| 57/57 [00:00<00:00, 5399.29it/s]
+/Users/alekhin/Desktop/gazprom/train_sentiment.py:201: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10. 
+For migrations of users: 
+1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead 
+2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e) 
+3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e) 
+see https://github.com/pytorch/ao/issues/2259 for more details
+  return torch.quantization.quantize_dynamic(
+[W521 11:38:34.661769000 qlinear_dynamic.cpp:251] Warning: Currently, qnnpack incorrectly ignores reduce_range when it is set to true; this may change in a future release. (function operator())
+Loading weights:   0%|          | 0/57 [00:00<?, ?it/s]Loading weights: 100%|██████████| 57/57 [00:00<00:00, 17914.97it/s]
+/Users/alekhin/Desktop/gazprom/train_sentiment.py:225: UserWarning: Exporting a model while it is in training mode. Please ensure that this is intended, as it may lead to different behavior during inference. Calling model.eval() before export is recommended.
+  torch.onnx.export(
+/Users/alekhin/Desktop/gazprom/train_sentiment.py:225: UserWarning: # 'dynamic_axes' is not recommended when dynamo=True, and may lead to 'torch._dynamo.exc.UserError: Constraints violated.' Supply the 'dynamic_shapes' argument instead if export is unsuccessful.
+  torch.onnx.export(
+W0521 11:39:20.375000 63812 torch/onnx/_internal/exporter/_compat.py:133] Setting ONNX exporter to use operator set version 18 because the requested opset_version 17 is a lower version than we have implementations for. Automatic version conversion will be performed, which may not be successful at converting to the requested version. If version conversion is unsuccessful, the opset version of the exported model will be kept at 18. Please consider setting opset_version >=18 to leverage latest ONNX features
+W0521 11:39:20.681000 63812 torch/onnx/_internal/exporter/_registration.py:107] torchvision is not installed. Skipping torchvision::nms
+W0521 11:39:20.681000 63812 torch/onnx/_internal/exporter/_registration.py:107] torchvision is not installed. Skipping torchvision::roi_align
+W0521 11:39:20.681000 63812 torch/onnx/_internal/exporter/_registration.py:107] torchvision is not installed. Skipping torchvision::roi_pool
+/opt/homebrew/anaconda3/lib/python3.13/copyreg.py:99: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+The model version conversion is not supported by the onnxscript version converter and fallback is enabled. The model will be converted using the onnx C API (target version: 17).
+Evaluation failed: cannot reshape array of size 1 into shape (1,4)
+Evaluation failed: cannot reshape array of size 1 into shape (1,4)
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+[torch.onnx] Obtain model graph for `OnnxWrapper([...]` with `torch.export.export(..., strict=False)`...
+[torch.onnx] Obtain model graph for `OnnxWrapper([...]` with `torch.export.export(..., strict=False)`... ✅
+[torch.onnx] Run decompositions...
+[torch.onnx] Run decompositions... ✅
+[torch.onnx] Translate the graph into ONNX...
+[torch.onnx] Translate the graph into ONNX... ✅
+[torch.onnx] Optimize the ONNX graph...
+[torch.onnx] Optimize the ONNX graph... ✅
+onnx int8 quantization skipped: [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (312) vs (3)
+onnx export/benchmark skipped: [ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Got invalid dimensions for input: input_ids for the following indices
+ index: 1 Got: 256 Expected: 4
+ Please fix either the inputs/outputs or the model.
+saved: models/sentiment results

@@ -1,0 +1,4 @@
+data/raw/*.csv
+models/sentiment/*.pt
+models/sentiment/*.onnx.data
+models/sentiment/*.safetensors

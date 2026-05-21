@@ -1,0 +1,3 @@
+full_train=True train=170901 val=21098 test=18990 epochs=2 batch=32
+{'epoch': 1, 'train_loss': 0.6025443815142669, 'val_loss': 0.49192044719150574, 'val_accuracy': 0.7730116598729737, 'val_f1_macro': 0.7670036667374095}
+{'epoch': 2, 'train_loss': 0.4583752922235279, 'val_loss': 0.487302576885982, 'val_accuracy': 0.7749075741776472, 'val_f1_macro': 0.7730351559095401}
